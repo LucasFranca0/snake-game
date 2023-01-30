@@ -25,10 +25,14 @@ public class Snake {
 
     public void move(Cell nextCell) {
         System.out.println("Snake is moving to "
-                + nextCell.getRow()
-                + " " + nextCell.getCol());
+                + nextCell.getRow() + " "
+                + nextCell.getCol());
         Cell tail = snakePartList.removeLast();
         tail.setCellType(CellType.EMPTY);
+
+        head = nextCell;
+        head.setCellType(CellType.SNAKE_NODE);
+        snakePartList.addFirst(head);
     }
 
     public boolean checkCrash(Cell nextCell) {
